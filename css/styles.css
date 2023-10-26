@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: row;
+}
+
+.left, .right {
+    background-color: #e0e7ed; /* Slightly bluish gray */
+    padding: 20px;
+    width: 25%; /* Adjust as needed */
+}
+
+.controls {
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+    justify-content: center;
+    margin-top: 20px; /* Add space above the buttons */
+}
+
+.center {
+    width: 30%;
+    text-align: center;
+    position: relative;
+}
+
+.piggy-bank {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(253, 223, 228);
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.piggy-content {
+    width: 0;
+    height: 0;
+    background-color: rgb(251, 124, 255);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+span#totalMoney {
+    display: block;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+#subtractMoneyButton {
+    background-color: red;
+}
+
+button {
+    /* Ovalish shape and colors */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+button:focus {
+    outline: none;
+}
+
+.right button {
+    background-color: red; 
+}
