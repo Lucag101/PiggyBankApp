@@ -72,3 +72,52 @@ button:focus {
 .right button {
     background-color: red; 
 }
+
+
+.sideBar{
+    border-radius: 5px;
+}
+
+.sideBarHeading {
+    text-align: center;
+    box-shadow: 1px 0px 3px 0px rgb(0 0 0 / 23%);
+    border-radius: 4px; 
+
+}
+
+.sideBarContents {
+    box-shadow: inset 0px 0px 3px 0px rgb(0 0 0 / 16%);
+    border-radius: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* padding: 30px; */
+    padding: unset;
+}
+
+.sideBarContents li{
+    list-style-type: none;
+    padding-top: 5px;
+    font-size: 18px;
+    font-family: math;
+    width: 100%;
+    padding: 10px 15px 10px 15px;
+    box-sizing: border-box;   
+}
+
+.sideBarContents li:hover{
+    background-color: #c4c9cf !important;
+    cursor: pointer;
+}
+
+/* .sideBarContents li:nth-child(odd) {
+    background-color: rgb(237, 237, 237);
+} */
+
+.sideBarContents li:nth-child(even) {
+    background-color: #d5dce3;
+}
+
+.sideBar  h2{ 
+    text-align: center;
+    padding: 10px;
+}
