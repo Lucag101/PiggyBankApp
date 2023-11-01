@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piggy Bank Money Tracker</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -23,13 +23,13 @@
         
             <div class="center">
 
-                <img src="images/piggy2.webp" alt="Piggy Bank" class="piggy-bank-image" style="max-width:200px">
+                <img src="../images/piggy2.webp" alt="Piggy Bank" class="piggy-bank-image" style="max-width:200px">
 
                 
                 <span id="totalMoney">0</span>
                 <div class="controls">
-                    <button id="addMoneyButton">Add</button>
-                    <button id="subtractMoneyButton">Spend</button>
+                    <button id="addMoneyButton" class="addButton">Add</button>
+                    <button id="subtractMoneyButton" class="subtractButton">Spend</button>
                 </div>
             </div>
         
@@ -40,10 +40,24 @@
                 <ul id="choresList" class="sideBarContents">
                     <!-- Items will be added dynamically here -->
                 </ul>
+                <div class="buttonContainer">
+                    <button  id="choreAdder" class="choreButton">Add Chore</button>
+                </div>
             </div>
         </div>
     </div>
         
-    <script src="js/scripts.js"></script>
+
+    <!--Modals here-->
+  
+    <div id="goalSetModal" class="modal invisible">
+        <div class="centerContainer">Functionality for settign Goal</div>
+    </div>
+
+    <div id="parentToolModal" class="modal invisible">
+        <div class="centerContainer">Functionality for parents to add new  chores</div>
+    </div>
+
+    <script src="../js/scripts.js"></script>
 </body>
 </html>
