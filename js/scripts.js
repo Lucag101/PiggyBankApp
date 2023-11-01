@@ -3,17 +3,34 @@ $(document).ready(function() {
 
         // Sample data
     let earningsData = ["Bought Jeans -30", "Watered the plants +5", "Walked the dog +5", "Did the dishes  +3"];
-    let choresData = ["Sweep the garage +3", "Make your bed every day +3", "Walk the dog +2"];
+    let choresData =[
+        {'chore': 'Sweep the garage', 'points': 3},
+        {'chore': 'Make your bed every day', 'points': 3},
+        {'chore': 'Walk the dog', 'points': 4},
+        {'chore': 'Do the dishes', 'points': 2},
+        {'chore': 'Take out the trash', 'points': 1},
+    ]
 
-    // Populate earnings
-    for(let item of earningsData) {
-        $('#earningsList').append(`<li>${item}</li>`);
-    }
+    function populateData(){
+         // Populate earnings
+        for(let item of earningsData) {
+            $('#earningsList').append(`<li>${item}</li>`);
+        }
 
-    // Populate chores
-    for(let chore of choresData) {
-        $('#choresList').append(`<li>${chore}</li>`);
-    }
+        // Populate chores
+        for(let chore of choresData) {        
+            
+            addLine =  $('<li>').html(chore['chore'] + "<span style='color:green'> +" + chore['points'] + "</span>").click(function() {
+                totalMoney += chore['points'];
+                $(this).remove();
+                updateDisplay()
+            }); 
+
+            $('#choresList').append(addLine);
+        }
+        // updateDisplay()
+    };
+   
 
     // Add event listeners for the buttons
     $('#addMoneyButton').click(function() {
@@ -58,4 +75,5 @@ $(document).ready(function() {
     }
 
     updateDisplay()
+    populateData()
 });
