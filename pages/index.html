@@ -13,7 +13,7 @@
         <div class="container">
             <div class="left sideBar">
                 <div class="sideBarHeading">
-                    <h2>Earnings</h2>
+                    <h2>Transactions</h2>
                 </div>
                 
                 <ul id="earningsList"  class="sideBarContents">
@@ -55,7 +55,23 @@
     </div>
 
     <div id="parentToolModal" class="modal invisible">
-        <div class="centerContainer">Functionality for parents to add new  chores</div>
+        <div class="centerContainer">
+            <label for="choreName">New Chore:</label>
+            <input type="text" id="choreName" name="choreName" placeholder="New Chore Here..." required>
+            <br>
+            <label for="newChorePrice">Payout Amount:</label>
+            <input type="number" id="newChorePrice" name="newChorePrice" placeholder="Enter Chore Price Here" required>
+            <br>
+            <label for="newChoreReaccuring">Weekly</label>
+            <input type="checkbox" id="newChoreReaccuring" name="newChoreReaccuring" value="false">
+            <br>
+
+            <div> 
+                <button id="addChore" class="choreButton">Add</button>
+                <button id="cancelChore" class="subtractButton">Cancel</button>
+            </div>
+        </div>
+       
     </div>
 
     <script src="../js/scripts.js"></script>

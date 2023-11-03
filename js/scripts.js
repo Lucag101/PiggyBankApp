@@ -1,9 +1,19 @@
 $(document).ready(function() {
-    
-    let totalMoney = 0;
+      // Sample data
+    let earningsData = [
+        {"transaction": "Bought Jeans", "cost": -10},
+        {"transaction": "Watered the plants", "cost": 15},
+        {"transaction": "Walked the dog", "cost": 15},
+        {"transaction": "Walked the dog", "cost": 15},
+        {"transaction": "Bought earphones", "cost": -10},
+    ];
 
-        // Sample data
-    let earningsData = ["Bought Jeans -30", "Watered the plants +5", "Walked the dog +5", "Did the dishes  +3"];
+    let totalMoney = 0;
+    for(tran in earningsData){
+        totalMoney += earningsData[tran]['cost']
+
+    }
+    
     let choresData =[
         {'chore': 'Sweep the garage', 'points': 3, 'continual': true},
         {'chore': 'Make your bed every day', 'points': 3 , 'continual': false},
@@ -32,37 +42,87 @@ $(document).ready(function() {
         $("#parentToolModal").removeClass('invisible')
     });
 
+    $('#cancelChore').click(function() {
+        hideModals()
+    });
+
+    $('#addChore').click(function() {
+        addNewChore()
+        populateData()
+        hideModals()
+    });
 
 
 
 //_____________________FUNCTIONS___________________________
 
+    function hideModals() {
+        $("#parentToolModal").addClass('invisible')
+        $("#goalSetModal").addClass('invisible')
+    }
+
+    function addNewChore() {
+        chore = $('#choreName').val()
+        $('#choreName').val('') //clear the input
+        
+        price = Number($('#newChorePrice').val())
+        $('#newChorePrice').val('') //clear the input
+        
+        continual = $('#newChoreReaccuring').is(':checked')
+        
+        choresData.push({'chore': chore, 'points': price, 'continual': continual})
+        updateDisplay()
+    }
+
     function populateData(){
          // Populate earnings
-        for(let item of earningsData) {
-            $('#earningsList').append(`<li>${item}</li>`);
+        $('#earningsList').empty();
+        for(count in earningsData) {
+            console.log(count)
+            console.log(earningsData[count])
+            var item = earningsData[count]
+            addLine =  $('<li>').html(item['transaction'])
+            if (item['cost'] < 0) {
+                addLine.append("<span style='color:red'> " + item['cost'] + "</span>")
+            } else {
+                addLine.append("<span style='color:green'> +" + item['cost'] + "</span>")
+            }
+            $('#earningsList').append(addLine);
         }
 
         // Populate chores
-        for(let chore of choresData) {        
-            addLine =  $('<li>').html(chore['chore'] + "<span style='color:green'> +" + chore['points'] + "</span>")
-            if (chore['continual'] == false){
-               addLine.click(function() {
-                    totalMoney += chore['points'];
-                    $(this).remove();
-                    updateDisplay()
-                }); 
-            } else {
-                //append onto the html a new span
-                addLine.prepend("<span style='color:blue'> (Weekly) </span>")
-                    .click(function() {
+        $('#choresList').empty();
+        for(var i = 0; i < choresData.length; i++) {  
+            
+            (function(index){
+                var chore = choresData[index];
+                var addLine = $('<li>').html(chore['chore'] + "<span style='color:green'> +" + chore['points'] + "</span>");
+                
+                if (!chore['continual']){
+                    addLine.click(function() {
                         totalMoney += chore['points'];
+                        earningsData.push({'transaction': chore['chore'], 'cost': chore['points']});
+                        choresData.splice(index, 1); // remove chore using the current index
                         updateDisplay()
-                    });
-            }
+                        populateData();
+                    }); 
+                } else {
+                    addLine.prepend("<span style='color:blue'> (Weekly) </span>")
+                        .click(function() {
+                            totalMoney += chore['points'];
+                            earningsData.push({'transaction': chore['chore'], 'cost': chore['points']});
+                            updateDisplay()
+                            populateData();
+                        });
+                }
 
-            $('#choresList').append(addLine);
-        }
+                $('#choresList').append(addLine);
+            })(i);
+        
+
+
+            // $('#choresList').append(addLine);
+        };
         // updateDisplay()
     };
    
@@ -75,6 +135,7 @@ $(document).ready(function() {
     }
 
     function updateDisplay() {
+        console.log(totalMoney)
         $('#totalMoney').text(totalMoney);
         const percentage = Math.min((totalMoney / 100) * 100, 100);
         $('#piggyContent').css({
