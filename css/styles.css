@@ -1,9 +1,11 @@
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    /* height: 100vh; */
+    padding-top: 6%;
     flex-direction: row;
+
 }
 
 .left, .right {
@@ -68,11 +70,11 @@ button:focus {
     background-color: red; 
 } */
 button.subtractButton{
-    background-color: red;
+    background-color: rgb(193, 105, 105);
 }
 
 button.addButton{
-    background-color: green;
+    background-color: rgb(99, 159, 99);
 }
 
 button.choreButton{
@@ -104,6 +106,8 @@ button.choreButton{
     padding-bottom: 20px;
     /* padding: 30px; */
     padding: unset;
+    overflow-y: auto;
+    max-height: 280px;
 }
 
 .sideBarContents li{
@@ -156,6 +160,9 @@ button.choreButton{
     z-index: 2;
     padding: 50px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .invisible{
