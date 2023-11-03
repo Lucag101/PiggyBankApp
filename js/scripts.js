@@ -1,5 +1,6 @@
 $(document).ready(function() {
       // Sample data
+    const fillRect = document.getElementById("fillUp");
     let earningsData = [
         {"transaction": "Bought Jeans", "cost": -10},
         {"transaction": "Watered the plants", "cost": 15},
@@ -8,6 +9,7 @@ $(document).ready(function() {
         {"transaction": "Bought earphones", "cost": -10},
     ];
 
+    var GoalAmount = 100;
     let totalMoney = 0;
     for(tran in earningsData){
         totalMoney += earningsData[tran]['cost']
@@ -89,7 +91,6 @@ $(document).ready(function() {
             }
             $('#earningsList').append(addLine);
         }
-
         // Populate chores
         $('#choresList').empty();
         for(var i = 0; i < choresData.length; i++) {  
@@ -124,14 +125,17 @@ $(document).ready(function() {
             // $('#choresList').append(addLine);
         };
         // updateDisplay()
+        updateFillUp(); 
     };
    
     function substractDollar() {
         totalMoney -= 1;
+        updateFillUp()
     }
 
     function addDollar() {
         totalMoney += 1;
+        updateFillUp()
     }
 
     function updateDisplay() {
@@ -144,7 +148,16 @@ $(document).ready(function() {
         });
     }
 
-    
+    function updateFillUp() {
+        if(GoalAmount > totalMoney){
+            let goalPercentage = totalMoney / GoalAmount;
+            let fillHeight = (65 - (goalPercentage * 65)) + 12;
+            fillRect.setAttribute("y", fillHeight);
+        }
+        
+    }
+
     updateDisplay()
     populateData()
+    updateFillUp(); 
 });
