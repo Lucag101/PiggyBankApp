@@ -1,7 +1,15 @@
 $(document).ready(function () {
     // Sample data
     const fillRect = document.getElementById("fillUp");
-    let earningsData = [];
+    // let earningsData = [];
+
+    let earningsData = [
+        {"transaction": "Bought Jeans", "cost": -10},
+        {"transaction": "Watered the plants", "cost": 15},
+        {"transaction": "Walked the dog", "cost": 15},
+        {"transaction": "Walked the dog", "cost": 15},
+        {"transaction": "Bought earphones", "cost": -10},
+    ];
 
     var savingsGoal = 100.0;
 
@@ -25,6 +33,10 @@ $(document).ready(function () {
     //_____________________EVENT LISTENERS___________________________
 
     // Add event listeners for the buttons
+    $("#updateGoalModalOpen").click(function () {
+        $("#goalSetModal").removeClass("invisible");
+    });
+    
     $("#addMoneyButton").click(function () {
         addDollar();
         updateDisplay();
@@ -39,7 +51,7 @@ $(document).ready(function () {
         $("#parentToolModal").removeClass("invisible");
     });
 
-    $("#cancelChore").click(function () {
+    $("#cancelChore, #cancelGoal").click(function () {
         hideModals();
     });
 
@@ -214,6 +226,7 @@ $(document).ready(function () {
         } else {
             alert("Please enter a valid number.");
         }
+        hideModals();
     });
 
     updateSavingsGoalDisplay();

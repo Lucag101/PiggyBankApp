@@ -21,19 +21,15 @@
                 </div>
 
                 <div class="center">
-                    <div class="sideBarHeading" id="savingsGoalDisplay"></div>
-                    <br />
-                    <div>
-                        <label for="newSavingsGoal">New Savings Goal:</label>
-                        <br />
-                        <input type="number" step="0.01" id="newSavingsGoal" />
-                        <button
-                            id="updateSavingsGoalButton"
-                            class="choreButton"
-                        >
-                            Update
-                        </button>
+                    <div class="sideBarHeading" >
+                        <h2 id="savingsGoalDisplay"  style="text-align: center;
+                        padding: 10px;"></h2>
                     </div>
+                    <button id="updateGoalModalOpen" class="choreButton">
+                        Update Goal
+                    </button>
+
+                    <br />
 
                     <div class="piggy-bank-container">
                         <!-- <img src="../images/MrPiggy.svg" alt="Piggy Bank" class="piggy-bank-image" style="min-width:400px; padding:5px"> -->
@@ -83,10 +79,10 @@
                     <span id="totalMoney">0</span>
                     <div class="controls">
                         <button id="addMoneyButton" class="addButton">
-                            Add
+                            Add Dollar
                         </button>
                         <button id="subtractMoneyButton" class="subtractButton">
-                            Spend
+                            Spend Dollar
                         </button>
                     </div>
                 </div>
@@ -115,9 +111,33 @@
 
         <!--Modals here-->
 
-        <div id="goalSetModal" class="modal invisible">
-            <div class="centerContainer">Functionality for settign Goal</div>
+        <div id ="goalSetModal" class="modal invisible">
+            <div class="centerContainer">
+                <div>
+                    <label for="newSavingsGoal">
+                        New Savings Goal:
+                    </label>
+                    <br />
+                    <input type="number" step="0.01" id="newSavingsGoal" />
+
+                </div>
+                <br />
+
+                <div>
+                    <button id="updateSavingsGoalButton" class="choreButton">
+                        Update
+                    </button>
+                    <button id="cancelGoal" class="subtractButton">
+                        Cancel
+                    </button>
+                    
+                </div>
+            </div>
         </div>
+
+        <!-- <div id="goalSetModal" class="modal invisible">
+            <div class="centerContainer">Functionality for settign Goal</div>
+        </div> -->
 
         <div id="parentToolModal" class="modal invisible">
             <div class="centerContainer">

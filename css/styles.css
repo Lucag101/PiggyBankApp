@@ -27,6 +27,8 @@
     position: relative;
     padding: 20px;
     width: 35%;
+    top: -50px;
+
 }
 
 .piggy-bank {
@@ -59,9 +61,14 @@
   }
 
 span#totalMoney {
-    display: block;
+    /* display: block;
     font-size: 24px;
-    margin-top: 10px;
+    margin-top: 10px; */
+    position: absolute;
+    margin-left: -9.5%;
+    font-size: 24px;
+    font-family: cursive;
+    margin-top: -40%;
 }
 
 button {
